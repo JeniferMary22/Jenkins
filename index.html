@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bright Future College</title>
+    <title>ShopEasy - Online Shopping</title>
 
     <style>
         /* CSS */
@@ -16,11 +16,11 @@
         }
 
         body {
-            background: #f4f7fc;
+            background: #f5f5f5;
         }
 
         header {
-            background: #142d4e;
+            background: #222;
             color: white;
             padding: 20px 8%;
             display: flex;
@@ -29,96 +29,107 @@
         }
 
         header h2 {
-            color: #ffc857;
+            color: orange;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
+            margin: 10px;
         }
 
         nav a:hover {
-            color: #ffc857;
+            color: orange;
         }
 
         .hero {
-            background: linear-gradient(120deg, #142d4e, #2874a6);
+            background: linear-gradient(120deg, #ff9800, #ff5722);
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 80px 20px;
         }
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        .btn {
-            background: #ffc857;
-            color: #142d4e;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        section {
-            padding: 60px 8%;
-            text-align: center;
-        }
-
-        section h2 {
-            color: #142d4e;
-            margin-bottom: 30px;
-            font-size: 30px;
-        }
-
-        .courses {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            width: 250px;
-            border-radius: 10px;
-            box-shadow: 0 3px 12px #0002;
-        }
-
-        .card h3 {
-            color: #2874a6;
+            font-size: 40px;
             margin-bottom: 15px;
         }
 
-        .about {
+        .hero p {
+            margin-bottom: 25px;
+        }
+
+        button {
+            background: #222;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #444;
+        }
+
+        .products {
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        .products h2 {
+            margin-bottom: 30px;
+        }
+
+        .product-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .product {
             background: white;
-            line-height: 1.8;
+            width: 230px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px #0002;
         }
 
-        .contact {
-            background: #e8f0fa;
+        .product .emoji {
+            font-size: 65px;
+            margin-bottom: 15px;
         }
 
-        input {
+        .product h3 {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #ff5722;
+            font-weight: bold;
+            margin: 12px;
+        }
+
+        .search {
+            text-align: center;
+            margin: 25px;
+        }
+
+        .search input {
             padding: 12px;
-            margin: 8px;
-            width: 260px;
+            width: 250px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
 
+        .cart {
+            text-align: center;
+            padding: 30px;
+            background: #fff;
+        }
+
         footer {
-            background: #142d4e;
+            background: #222;
             color: white;
             text-align: center;
             padding: 20px;
@@ -130,12 +141,8 @@
                 gap: 15px;
             }
 
-            nav a {
-                margin: 7px;
-            }
-
             .hero h1 {
-                font-size: 30px;
+                font-size: 28px;
             }
         }
     </style>
@@ -145,99 +152,157 @@
 
     <!-- Navigation -->
     <header>
-        <h2>Bright Future</h2>
+        <h2>ShopEasy</h2>
+
         <nav>
             <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#courses">Courses</a>
-            <a href="#contact">Contact</a>
+            <a href="#products">Products</a>
+            <a href="#cart">Cart 🛒</a>
         </nav>
     </header>
 
-    <!-- Home Section -->
-    <div class="hero" id="home">
-        <h1>Welcome to Bright Future College</h1>
-        <p>Learn Today, Lead Tomorrow!</p>
-        <button class="btn" onclick="showMessage()">
-            Explore More
-        </button>
-    </div>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <h2>About Our College</h2>
-        <p>
-            Bright Future College provides quality education
-            and helps students develop their knowledge and skills.
-            Our goal is to create successful future leaders.
-        </p>
+    <!-- Home -->
+    <section class="hero" id="home">
+        <h1>Welcome to ShopEasy</h1>
+        <p>Discover amazing products at affordable prices!</p>
+        <button onclick="goToProducts()">Shop Now</button>
     </section>
 
-    <!-- Courses Section -->
-    <section id="courses">
-        <h2>Our Courses</h2>
+    <!-- Search -->
+    <div class="search">
+        <input type="text" id="searchInput"
+        placeholder="Search products..." onkeyup="searchProducts()">
+    </div>
 
-        <div class="courses">
-            <div class="card">
-                <h3>Computer Science</h3>
-                <p>Learn programming, software development and technology.</p>
+    <!-- Products -->
+    <section class="products" id="products">
+        <h2>Our Products</h2>
+
+        <div class="product-container" id="productList">
+
+            <div class="product">
+                <div class="emoji">📱</div>
+                <h3>Smart Phone</h3>
+                <p>Latest smartphone</p>
+                <p class="price">₹15,000</p>
+                <button onclick="addToCart('Smart Phone',15000)">Add to Cart</button>
             </div>
 
-            <div class="card">
-                <h3>Information Technology</h3>
-                <p>Explore networking, databases and web development.</p>
+            <div class="product">
+                <div class="emoji">💻</div>
+                <h3>Laptop</h3>
+                <p>Powerful laptop</p>
+                <p class="price">₹45,000</p>
+                <button onclick="addToCart('Laptop',45000)">Add to Cart</button>
             </div>
 
-            <div class="card">
-                <h3>Business Management</h3>
-                <p>Develop leadership and business management skills.</p>
+            <div class="product">
+                <div class="emoji">🎧</div>
+                <h3>Headphones</h3>
+                <p>Wireless headphones</p>
+                <p class="price">₹2,000</p>
+                <button onclick="addToCart('Headphones',2000)">Add to Cart</button>
             </div>
+
+            <div class="product">
+                <div class="emoji">⌚</div>
+                <h3>Smart Watch</h3>
+                <p>Stylish smart watch</p>
+                <p class="price">₹3,000</p>
+                <button onclick="addToCart('Smart Watch',3000)">Add to Cart</button>
+            </div>
+
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2>Contact Us</h2>
-
-        <form onsubmit="sendMessage(event)">
-            <input type="text" id="name"
-                placeholder="Enter Your Name" required>
-            <br>
-
-            <input type="email" id="email"
-                placeholder="Enter Your Email" required>
-            <br>
-
-            <button class="btn" type="submit">
-                Submit
-            </button>
-        </form>
-
-        <p id="result"></p>
+    <!-- Shopping Cart -->
+    <section class="cart" id="cart">
+        <h2>Shopping Cart 🛒</h2>
+        <p>Items Added: <span id="count">0</span></p>
+        <p>Total Amount: ₹<span id="total">0</span></p>
+        <div id="cartItems"></div>
+        <br>
+        <button onclick="clearCart()">Clear Cart</button>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Bright Future College. All Rights Reserved.</p>
+        <p>© 2026 ShopEasy. All Rights Reserved.</p>
     </footer>
 
     <script>
         // JavaScript
 
-        function showMessage() {
-            alert("Welcome to Bright Future College!");
+        let count = 0;
+        let total = 0;
+
+        let cart = [];
+
+        function addToCart(name, price) {
+
+            cart.push({name, price});
+
+            count++;
+            total += price;
+
+            document.getElementById("count").innerText = count;
+            document.getElementById("total").innerText = total.toLocaleString("en-IN");
+
+            displayCart();
         }
 
-        function sendMessage(event) {
-            event.preventDefault();
+        function displayCart() {
+            let output = "";
 
-            let name = document.getElementById("name").value;
+            cart.forEach((item, index) => {
+                output += `<p>${item.name} - ₹${item.price.toLocaleString("en-IN")}
+                <button onclick="removeItem(${index})">Remove</button></p>`;
+            });
 
-            document.getElementById("result").innerHTML =
-                "Thank you, " + name + "! Your details have been received.";
-
-            document.querySelector("form").reset();
+            document.getElementById("cartItems").innerHTML = output;
         }
+
+        function removeItem(index) {
+            total -= cart[index].price;
+            cart.splice(index, 1);
+            count--;
+
+            document.getElementById("count").innerText = count;
+            document.getElementById("total").innerText = total.toLocaleString("en-IN");
+
+            displayCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            count = 0;
+            total = 0;
+
+            document.getElementById("count").innerText = count;
+            document.getElementById("total").innerText = total;
+
+            displayCart();
+        }
+
+        function searchProducts() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+
+            let products = document.querySelectorAll(".product");
+
+            products.forEach(product => {
+                let name = product.querySelector("h3").innerText.toLowerCase();
+
+                product.style.display =
+                    name.includes(input) ? "block" : "none";
+            });
+        }
+
+        function goToProducts() {
+            document.getElementById("products").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
     </script>
 
 </body>
