@@ -1,11 +1,244 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bright Future College</title>
+
+    <style>
+        /* CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fc;
+        }
+
+        header {
+            background: #142d4e;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h2 {
+            color: #ffc857;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #ffc857;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #142d4e, #2874a6);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background: #ffc857;
+            color: #142d4e;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #142d4e;
+            margin-bottom: 30px;
+            font-size: 30px;
+        }
+
+        .courses {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px #0002;
+        }
+
+        .card h3 {
+            color: #2874a6;
+            margin-bottom: 15px;
+        }
+
+        .about {
+            background: white;
+            line-height: 1.8;
+        }
+
+        .contact {
+            background: #e8f0fa;
+        }
+
+        input {
+            padding: 12px;
+            margin: 8px;
+            width: 260px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        footer {
+            background: #142d4e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media(max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 7px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>my 1st jenkins project</h1>
+
+    <!-- Navigation -->
+    <header>
+        <h2>Bright Future</h2>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <div class="hero" id="home">
+        <h1>Welcome to Bright Future College</h1>
+        <p>Learn Today, Lead Tomorrow!</p>
+        <button class="btn" onclick="showMessage()">
+            Explore More
+        </button>
+    </div>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About Our College</h2>
+        <p>
+            Bright Future College provides quality education
+            and helps students develop their knowledge and skills.
+            Our goal is to create successful future leaders.
+        </p>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <h2>Our Courses</h2>
+
+        <div class="courses">
+            <div class="card">
+                <h3>Computer Science</h3>
+                <p>Learn programming, software development and technology.</p>
+            </div>
+
+            <div class="card">
+                <h3>Information Technology</h3>
+                <p>Explore networking, databases and web development.</p>
+            </div>
+
+            <div class="card">
+                <h3>Business Management</h3>
+                <p>Develop leadership and business management skills.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+
+        <form onsubmit="sendMessage(event)">
+            <input type="text" id="name"
+                placeholder="Enter Your Name" required>
+            <br>
+
+            <input type="email" id="email"
+                placeholder="Enter Your Email" required>
+            <br>
+
+            <button class="btn" type="submit">
+                Submit
+            </button>
+        </form>
+
+        <p id="result"></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Bright Future College. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript
+
+        function showMessage() {
+            alert("Welcome to Bright Future College!");
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+
+            document.getElementById("result").innerHTML =
+                "Thank you, " + name + "! Your details have been received.";
+
+            document.querySelector("form").reset();
+        }
+    </script>
+
 </body>
 </html>
